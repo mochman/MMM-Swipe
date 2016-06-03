@@ -1,0 +1,26 @@
+{
+  "name": "MMM-Swipe",
+  "version": "1.0.0",
+  "description": "Uses HC-SR04 sensors to detect hand movements",
+  "main": "MMM-Swipe.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mochman/MMM-Swipe.git"
+  },
+  "keywords": [
+    "Magic Mirror",
+    "Hand Gestures",
+    "Swipe",
+    "Modules"
+  ],
+  "author": "Luke Moch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mochman/MMM-Swipe/issues"
+  },
+  "homepage": "https://github.com/mochman/MMM-Swipe#readme",
+  "dependencies": {
+    "math-statistics": "latest",
+    "mmm-usonic": "latest"
+  }
+}
