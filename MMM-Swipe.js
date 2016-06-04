@@ -18,7 +18,7 @@ Module.register("MMM-Swipe", {
 		sampleInterval: 300,
 		swipeSpeed: 1000,
 		verbose: false,
-		calibrate: false
+		calibrate: true
 	},
 	  
 	start: function() {

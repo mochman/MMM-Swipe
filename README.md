@@ -107,7 +107,7 @@ The following properties can be configured:
 			<td><code>calibrate</code></td>
 			<td>This will dispay the distances read by your sensors so you can use a <code>leftDistance</code> & <code>rightDistance</code> that works for you.<br>
 				<br><b>Example:</b> <code>true</code>
-				<br><b>Default Value:</b> <code>false</code>
+				<br><b>Default Value:</b> <code>true</code>
 			</td>
 		</tr>	
 	</tbody>
