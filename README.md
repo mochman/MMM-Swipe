@@ -29,18 +29,16 @@ modules: [
 ]
 ````
 
-This module will use the `sendNotification(notification, payload)` to send:
-`notification = 'MOVEMENT'`
-`payload = 'Swipe Left', 'Swipe Right', 'Press'`
+This module will use the `sendNotification(notification, payload)` to send:<br>
+`notification = 'MOVEMENT'`<br>
+`payload = 'Swipe Left'`, `'Swipe Right'`, or `'Press'`
 
 Please use as appropriate in your module using `notificationReceived(notification, payload, sender)`
 
 ## Wiring the Sensors
 
 <b>Please wire the sensors using this diagram.</b>
-<p>
 <img src="https://raw.githubusercontent.com/clebert/r-pi-usonic/master/resources/hcsr04.png>
-</p>
 
 ## Configuration options
 
