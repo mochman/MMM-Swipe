@@ -29,26 +29,22 @@ module.exports = NodeHelper.create({
 		this.config = payload;
 		var sensorLeft;
 		var sensorRight;
-		if ( notification === 'INIT') {
-			self.sendSocketNotification('STATUS', 'Initialized');
-		} else if ( notification === 'CALIBRATE') {
+		if ( notification === 'CALIBRATE') {
 
 			self.sensorLeft = usonic.createSensor(self.config.echoLeftPin, self.config.triggerLeftPin, self.config.sensorTimeout);
 			self.sensorRight = usonic.createSensor(self.config.echoRightPin, self.config.triggerRightPin, self.config.sensorTimeout);
 			var distances = [this.sensorLeft().toFixed(2), this.sensorRight().toFixed(2)];
 			self.sendSocketNotification('CALIBRATION', distances);
-		} else if (notification === 'RESET') {
+		} else if (notification === 'INIT') {
 			self.sensorLeft = usonic.createSensor(self.config.echoLeftPin, self.config.triggerLeftPin, self.config.sensorTimeout);
 			self.sensorRight = usonic.createSensor(self.config.echoRightPin, self.config.triggerRightPin, self.config.sensorTimeout);
-			//var distanceLeft = this.sensorLeft().toFixed(2);
-			//var distanceRight = this.sensorRight().toFixed(2);
+
 			if (this.sensorLeft().toFixed(2) <= self.config.leftDistance) {
 				var distancesLeft;
 				var distancesRight;
 				var i = 5;
 				var countdownTime = self.config.swipeSpeed / i;
 				(function measure(x) {
-				  //console.log("Iteration - " + x);
 					if(x == i) {
 					self.distancesLeft = [];
 					self.distancesRight = [];
@@ -69,16 +65,13 @@ module.exports = NodeHelper.create({
 						if(--x) measure(x);
 					}, countdownTime);
 				})(i);	
-				//console.log("Left Avg - " + statistics.median(self.distancesLeft).toFixed(2));
-				//console.log("Right Avg - " + statistics.median(self.distancesRight).toFixed(2));
-				//self.sendSocketNotification('MOVEMENT', "Left");
+
 			} else if (this.sensorRight().toFixed(2) <= self.config.rightDistance) {
 				var distancesLeft;
 				var distancesRight;
 				var i = 5;
 				var countdownTime = self.config.swipeSpeed / i;
 				(function measure(x) {
-				  //console.log("Iteration - " + x);
 					if(x == i) {
 					self.distancesLeft = [];
 					self.distancesRight = [];
