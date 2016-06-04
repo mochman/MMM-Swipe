@@ -38,7 +38,7 @@ Please use as appropriate in your module using `notificationReceived(notificatio
 ## Wiring the Sensors
 
 <b>Please wire the sensors using this diagram.</b>
-<img src="https://raw.githubusercontent.com/clebert/r-pi-usonic/master/resources/hcsr04.png>
+
 
 ## Configuration options
 
