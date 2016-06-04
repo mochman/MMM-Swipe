@@ -51,8 +51,6 @@ module.exports = NodeHelper.create({
 					} else if (x == 1 ) {
 						var avgLeft = statistics.median(self.distancesLeft).toFixed(0);
 						var avgRight = statistics.median(self.distancesRight).toFixed(0);
-						//console.log("Left - " + avgLeft);
-						//console.log("Right - " + avgRight);
 						if( avgLeft <= self.config.leftDistance && avgRight <= self.config.rightDistance) {
 							self.sendSocketNotification('MOVEMENT', 'Press');
 						} else if ( avgRight * 1.3 <= avgLeft ) {
@@ -78,8 +76,7 @@ module.exports = NodeHelper.create({
 					} else if (x == 1 ) {
 						var avgLeft = statistics.median(self.distancesLeft).toFixed(0);
 						var avgRight = statistics.median(self.distancesRight).toFixed(0);
-						//console.log("Left - " + avgLeft);
-						//console.log("Right - " + avgRight);
+
 						if( avgLeft <= self.config.leftDistance && avgRight <= self.config.rightDistance) {
 							self.sendSocketNotification('MOVEMENT', 'Press');
 						} else if ( avgLeft * 1.3 <= avgRight ) {
@@ -102,7 +99,3 @@ module.exports = NodeHelper.create({
 	}
   
 });
-
-
-//var sensor1 = usonic.createSensor(24, 23, 500);
-//var sensor2 = usonic.createSensor(26, 25, 500);

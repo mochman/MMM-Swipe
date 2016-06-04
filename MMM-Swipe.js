@@ -27,9 +27,9 @@ Module.register("MMM-Swipe", {
 		var notificationData = null;
 		var notificationInfo = null;
 		var displayData = null;
-		var currentData = false;
+		var currentData = 0;
 		console.log('Starting Module: ' + this.name);
-		if(((27 - self.config.echoLeftPin)*(27 - self.config.echoRightPin) * (27 - self.config.triggerLeftPin) * (27 - self.config.triggerRightPin))>0) {
+		if(self.config.echoLeftPin < 27 && self.config.echoRightPin < 27 && self.config.triggerLeftPin < 27 && self.config.triggerRightPin < 27) {
 			setInterval(function () {
 				if (self.currentData === 1) {
 					if(self.notificationInfo === 'MOVEMENT') {
@@ -61,7 +61,6 @@ Module.register("MMM-Swipe", {
 	},
 	
 	socketNotificationReceived: function(notification, payload) {
-
 		if (notification === 'CALIBRATION') {
 			this.notificationData = "<table border=\"1\" cellpadding=\"5\"><tr align=\"center\"><th>Left</td><th>Right</td></tr><tr align=\"center\"><td>" + payload[0] + "</td><td>" + payload[1] + "</td></tr></table>";
 			this.currentData = 1;
@@ -74,9 +73,6 @@ Module.register("MMM-Swipe", {
 			this.previousNote = notification;
 			this.notificationData = payload;
 			this.currentData = 1;
-		} else {
-			this.notificationData = "";
-			this.currentData = 0;
 		}
 	},
 	
