@@ -41,6 +41,7 @@ Please use as appropriate in your module using `notificationReceived(notificatio
 
 <b>Please wire the sensors using this diagram.</b>
 ![Example: hcsr04.png] (https://raw.githubusercontent.com/clebert/r-pi-usonic/master/resources/hcsr04.png)
+
 Remember to use the GPIO numbers, not actual pins.  For example, if you want to use the defaults and you have a Raspberry Pi 2/3, echoLeftPin should be on GPIO24 (which is physical pin 18, etc...).
 
 ## Configuration options
