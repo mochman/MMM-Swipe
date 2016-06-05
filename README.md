@@ -89,7 +89,7 @@ The following properties can be configured:
 		<tr>
 			<td><code>useAsButton</code></td>
 			<td>If you want to enable a GPIO output when you "press", change this to true<br>
-				<br><b>Example:</b> <code>true/code>
+				<br><b>Example:</b> <code>true</code>
 				<br><b>Default Value:</b> <code>false</code>
 			</td>
 		</tr>
