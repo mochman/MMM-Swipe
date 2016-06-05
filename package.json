@@ -1,6 +1,6 @@
 {
   "name": "MMM-Swipe",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Uses HC-SR04 sensors to detect hand movements",
   "main": "MMM-Swipe.js",
   "repository": {
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/mochman/MMM-Swipe#readme",
   "dependencies": {
     "math-statistics": "latest",
-    "mmm-usonic": "latest"
+    "mmm-usonic": "latest",
+    "mmm-gpio": "latest"
   }
 }

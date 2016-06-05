@@ -10,6 +10,7 @@
 const NodeHelper = require('node_helper');
 const usonic = require('mmm-usonic');
 const statistics = require('math-statistics');
+const gpio = require('mmm-gpio');
 
 
 module.exports = NodeHelper.create({
@@ -22,11 +23,19 @@ module.exports = NodeHelper.create({
 				self.initSensor();
                         }
 		});	
+		gpio.init(function (error) {
+			if (error) {
+				console.log(error);
+			} else {
+				self.initSensor();
+			}
+		});
 	},
 	
 	socketNotificationReceived: function (notification, payload) {
 		const self = this;
 		this.config = payload;
+		var buttonWait = 0;
 		var sensorLeft;
 		var sensorRight;
 		if ( notification === 'CALIBRATE') {
@@ -92,7 +101,13 @@ module.exports = NodeHelper.create({
 			} else {
 				self.sendSocketNotification('STATUS', "Waiting for Movement");
 			}
-		}
+		} else if (notification === 'PRESS') {
+			var trigger = gpio.createOutput(payload);
+			setTimeout(function(){
+				trigger(false);
+			},1000);
+				trigger(true);
+		} 	
 	},
 	
 	initSensor: function () {

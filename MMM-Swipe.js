@@ -7,12 +7,14 @@
 
 Module.register("MMM-Swipe", {
 	defaults : {
-		echoLeftPin: 24,
-		triggerLeftPin: 23,
-		echoRightPin: 26,
-		triggerRightPin: 25,
-		leftDistance: 20,
-		rightDistance: 20,
+		echoLeftPin: "",
+		triggerLeftPin: "",
+		echoRightPin: "",
+		triggerRightPin: "",
+		leftDistance: "",
+		rightDistance: "",
+		useAsButton: false,
+		buttonPin: "",
 		sensorTimeout: 500,
 		animationSpeed: 200,
 		sampleInterval: 300,
@@ -29,11 +31,17 @@ Module.register("MMM-Swipe", {
 		var displayData = null;
 		var currentData = 0;
 		console.log('Starting Module: ' + this.name);
+		if(self.config.useAsButton === true && self.config.buttonPin < 27) {
+			self.sendSocketNotification('INIT_BUTTON', self.config.buttonPin);
+		}
 		if(self.config.echoLeftPin < 27 && self.config.echoRightPin < 27 && self.config.triggerLeftPin < 27 && self.config.triggerRightPin < 27) {
 			setInterval(function () {
 				if (self.currentData === 1) {
 					if(self.notificationInfo === 'MOVEMENT') {
 						self.sendNotification(self.notificationInfo, self.notificationData);
+						if(self.notificationData === 'Press' && self.config.useAsButton === true) {
+							self.sendSocketNotification('PRESS', self.config.buttonPin);
+						}
 					}
 					self.displayData = self.notificationData;
 					if (self.config.verbose === true || self.config.calibrate === true) {
