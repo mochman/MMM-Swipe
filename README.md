@@ -18,10 +18,12 @@ modules: [
 									// Best results in one of the side regions like: bottom_left
 		config: {
 			// See 'Configuration options' for more information.
-			echoLeftPin: 24, 	//Left Sensor's BCM Numbered Echo pin - REQUIRED
+			echoLeftPin: 24, 		//Left Sensor's BCM Numbered Echo pin - REQUIRED
 			triggerLeftPin: 23, 	//Left Sensor's BCM Numbered trigger pin - REQUIRED
-			echoRightPin: 26, 	//Right Sensor's BCM Numbered Echo pin - REQUIRED
+			echoRightPin: 26, 		//Right Sensor's BCM Numbered Echo pin - REQUIRED
 			triggerRightPin: 25, 	//Right Sensor's BCM Numbered trigger pin - REQUIRED
+			useAsButton: false,		//Enable a GPIO output when you "press".
+			buttonPin: 8,
 			verbose: false,		
 			calibrate: false	
 		}
@@ -39,6 +41,7 @@ Please use as appropriate in your module using `notificationReceived(notificatio
 
 <b>Please wire the sensors using this diagram.</b>
 ![Example: hcsr04.png] (https://raw.githubusercontent.com/clebert/r-pi-usonic/master/resources/hcsr04.png)
+Remember to use the GPIO numbers, not actual pins.  For example, if you want to use the defaults and you have a Raspberry Pi 2/3, echoLeftPin should be on GPIO24 (which is physical pin 18, etc...).
 
 ## Configuration options
 
@@ -80,6 +83,20 @@ The following properties can be configured:
 			<td>Right Sensor's Echo pin.<br>
 				<br><b>Example:</b> <code>25</code>
 				<br> This value is <b>REQUIRED</b>
+			</td>
+		</tr>
+		<tr>
+			<td><code>useAsButton</code></td>
+			<td>If you want to enable a GPIO output when you "press", change this to true<br>
+				<br><b>Example:</b> <code>true/code>
+				<br><b>Default Value:</b> <code>false</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>triggerRightPin</code></td>
+			<td>GPIO pin that will be activated when you "press" the sensors.<br>
+				<br><b>Example:</b> <code>8</code>
+				<br> This value is <b>REQUIRED if you enable useAsButton</b>
 			</td>
 		</tr>
 		<tr>
