@@ -1,6 +1,6 @@
 {
   "name": "MMM-Swipe",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Uses HC-SR04 sensors to detect hand movements",
   "main": "MMM-Swipe.js",
   "repository": {
@@ -19,9 +19,15 @@
     "url": "https://github.com/mochman/MMM-Swipe/issues"
   },
   "homepage": "https://github.com/mochman/MMM-Swipe#readme",
+  "scripts": {
+    "postinstall": "node_modules/.bin/electron-rebuild -e ../../node_modules/electron-prebuilt"
+  },
   "dependencies": {
     "math-statistics": "latest",
     "mmm-usonic": "latest",
     "mmm-gpio": "latest"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.2.1"
   }
 }
